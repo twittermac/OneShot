@@ -21,20 +21,55 @@ OneShot/
 
 ### Installation
 1. Clone the repository
+   ```bash
+   git clone https://github.com/twittermac/OneShot.git
+   cd OneShot
+   ```
+
 2. Install dependencies:
    ```bash
    pod install
    ```
+
 3. Open `OneShot.xcworkspace`
+   ```bash
+   open OneShot.xcworkspace
+   ```
+
 4. Build and run the project
 
-## Branch Strategy
+## Development Workflow
 
+### Branch Strategy
 - `main`: Production branch
 - `develop`: Development branch
 - `feature/*`: Feature branches
 - `hotfix/*`: Emergency fixes
 - `release/*`: Release branches
+
+### Making Changes
+1. Create a feature branch:
+   ```bash
+   git checkout develop
+   git checkout -b feature/your-feature-name
+   ```
+
+2. Make your changes and commit:
+   ```bash
+   # Update version if needed
+   ./scripts/version.sh [major|minor|patch]
+   
+   # Commit changes
+   git add .
+   git commit -m "type(scope): description"
+   ```
+
+3. Push changes:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+4. Create a Pull Request on GitHub
 
 ### Commit Guidelines
 
