@@ -1,0 +1,51 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Select Xcode
+      run: sudo xcode-select -s /Applications/Xcode_15.0.app
+      
+    - name: Install CocoaPods
+      run: |
+        sudo gem install cocoapods
+        pod install
+        
+    - name: Build
+      run: |
+        xcodebuild clean build -workspace OneShot.xcworkspace -scheme OneShot -destination 'platform=iOS Simulator,name=iPhone 14 Pro'
+        
+    - name: Run Tests
+      run: |
+        xcodebuild test -workspace OneShot.xcworkspace -scheme OneShot -destination 'platform=iOS Simulator,name=iPhone 14 Pro'
+        
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: build
+        path: build/
+        
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: macos-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to App Store
+      env:
+        APP_STORE_CONNECT_API_KEY: ${{ secrets.APP_STORE_CONNECT_API_KEY }}
+      run: |
+        # Add deployment steps here
+        echo "Deploying to App Store..." 
