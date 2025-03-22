@@ -6,6 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1198F9E72D8F6DDF00E25CF3 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		1198FA042D8F6E3A00E25CF3 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		1198FA3B2D8F704900E25CF3 /* ReplayKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1198FA3A2D8F704900E25CF3 /* ReplayKit */; };
+		1198FA3D2D8F704900E25CF3 /* RtcBasic in Frameworks */ = {isa = PBXBuildFile; productRef = 1198FA3C2D8F704900E25CF3 /* RtcBasic */; };
+		11DA8A1F2D8F72CE0076667F /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 11DA8A1E2D8F72CE0076667F /* FirebaseAuth */; };
+		11DA8A212D8F72CE0076667F /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 11DA8A202D8F72CE0076667F /* FirebaseAuthCombine-Community */; };
+		11DA8A232D8F72CE0076667F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 11DA8A222D8F72CE0076667F /* FirebaseFirestore */; };
+		11DA8A252D8F72CE0076667F /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 11DA8A242D8F72CE0076667F /* FirebaseFirestoreCombine-Community */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		11069EF32D8F548100D3552D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +40,30 @@
 		11069EFC2D8F548100D3552D /* OneShotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneShotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		11DA8A1B2D8F71F40076667F /* Exceptions for "OneShot" folder in "OneShotTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info (2).plist",
+			);
+			target = 11069EF12D8F548000D3552D /* OneShotTests */;
+		};
+		11DA8A1C2D8F71F40076667F /* Exceptions for "OneShot" folder in "OneShotUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"GoogleService-Info (2).plist",
+			);
+			target = 11069EFB2D8F548100D3552D /* OneShotUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		11069EE32D8F547900D3552D /* OneShot */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				11DA8A1B2D8F71F40076667F /* Exceptions for "OneShot" folder in "OneShotTests" target */,
+				11DA8A1C2D8F71F40076667F /* Exceptions for "OneShot" folder in "OneShotUITests" target */,
+			);
 			path = OneShot;
 			sourceTree = "<group>";
 		};
@@ -52,6 +84,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1198F9E72D8F6DDF00E25CF3 /* (null) in Frameworks */,
+				11DA8A252D8F72CE0076667F /* FirebaseFirestoreCombine-Community in Frameworks */,
+				11DA8A212D8F72CE0076667F /* FirebaseAuthCombine-Community in Frameworks */,
+				11DA8A1F2D8F72CE0076667F /* FirebaseAuth in Frameworks */,
+				1198FA042D8F6E3A00E25CF3 /* (null) in Frameworks */,
+				1198FA3B2D8F704900E25CF3 /* ReplayKit in Frameworks */,
+				1198FA3D2D8F704900E25CF3 /* RtcBasic in Frameworks */,
+				11DA8A232D8F72CE0076667F /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +152,12 @@
 			);
 			name = OneShot;
 			packageProductDependencies = (
+				1198FA3A2D8F704900E25CF3 /* ReplayKit */,
+				1198FA3C2D8F704900E25CF3 /* RtcBasic */,
+				11DA8A1E2D8F72CE0076667F /* FirebaseAuth */,
+				11DA8A202D8F72CE0076667F /* FirebaseAuthCombine-Community */,
+				11DA8A222D8F72CE0076667F /* FirebaseFirestore */,
+				11DA8A242D8F72CE0076667F /* FirebaseFirestoreCombine-Community */,
 			);
 			productName = OneShot;
 			productReference = 11069EE12D8F547900D3552D /* OneShot.app */;
@@ -195,6 +241,10 @@
 			);
 			mainGroup = 11069ED82D8F547900D3552D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1198FA392D8F704900E25CF3 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */,
+				11DA8A1D2D8F72CE0076667F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11069EE22D8F547900D3552D /* Products */;
 			projectDirPath = "";
@@ -396,6 +446,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera for live streaming.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone for live streaming.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -411,7 +464,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneShot.OneShot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twittermac518.oneshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -435,6 +488,9 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera for live streaming.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone for live streaming.";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -450,7 +506,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneShot.OneShot;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twittermac518.oneshot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -472,7 +528,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneShot.OneShotTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twittermac518.oneshot.OneShotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -495,7 +551,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneShot.OneShotTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twittermac518.oneshot.OneShotTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -517,7 +573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneShot.OneShotUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twittermac518.oneshot.OneShotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -539,7 +595,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = OneShot.OneShotUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twittermac518.oneshot.OneShotUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -591,6 +647,58 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1198FA392D8F704900E25CF3 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AgoraIO/AgoraRtcEngine_iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.5.1;
+			};
+		};
+		11DA8A1D2D8F72CE0076667F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1198FA3A2D8F704900E25CF3 /* ReplayKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1198FA392D8F704900E25CF3 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = ReplayKit;
+		};
+		1198FA3C2D8F704900E25CF3 /* RtcBasic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1198FA392D8F704900E25CF3 /* XCRemoteSwiftPackageReference "AgoraRtcEngine_iOS" */;
+			productName = RtcBasic;
+		};
+		11DA8A1E2D8F72CE0076667F /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11DA8A1D2D8F72CE0076667F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		11DA8A202D8F72CE0076667F /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11DA8A1D2D8F72CE0076667F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		11DA8A222D8F72CE0076667F /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11DA8A1D2D8F72CE0076667F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		11DA8A242D8F72CE0076667F /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11DA8A1D2D8F72CE0076667F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11069ED92D8F547900D3552D /* Project object */;
 }

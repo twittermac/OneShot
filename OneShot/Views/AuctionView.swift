@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AuctionView: View {
     let channelId: String
-    @State private var currentBid: String = ""
+    @StateObject private var channelManager = ChannelManager.shared
     @State private var showBidSheet = false
     @State private var showEndAuctionAlert = false
     
@@ -14,7 +14,7 @@ struct AuctionView: View {
                     Text("Current Price")
                         .font(.subheadline)
                         .foregroundColor(.gray)
-                    Text("$0.00") // TODO: Get from ChannelManager
+                    Text("$\(channelManager.currentChannel?.currentPrice ?? 0.0, specifier: "%.2f")")
                         .font(.title)
                         .bold()
                 }
@@ -22,10 +22,10 @@ struct AuctionView: View {
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    Text("Time Remaining")
+                    Text("Starting Price")
                         .font(.subheadline)
                         .foregroundColor(.gray)
-                    Text("00:00") // TODO: Get from ChannelManager
+                    Text("$\(channelManager.currentChannel?.startPrice ?? 0.0, specifier: "%.2f")")
                         .font(.title2)
                         .bold()
                 }
@@ -42,8 +42,12 @@ struct AuctionView: View {
                         .font(.headline)
                         .padding(.horizontal)
                     
-                    ForEach(0..<5) { _ in // TODO: Get from ChannelManager
-                        BidHistoryRow()
+                    if let channel = channelManager.currentChannel {
+                        Text("Current Bid: $\(channel.currentPrice, specifier: "%.2f")")
+                            .padding(.horizontal)
+                    } else {
+                        Text("No active auction")
+                            .padding(.horizontal)
                     }
                 }
             }
@@ -62,7 +66,7 @@ struct AuctionView: View {
                         .cornerRadius(12)
                 }
                 
-                if ChannelManager.shared.getChannel(channelId: channelId)?.sellerId == "current_user_id" { // TODO: Get actual user ID
+                if channelManager.currentChannel?.hostId == "current_user_id" {
                     Button(action: {
                         showEndAuctionAlert = true
                     }) {
@@ -84,7 +88,7 @@ struct AuctionView: View {
         .alert("End Auction", isPresented: $showEndAuctionAlert) {
             Button("Cancel", role: .cancel) { }
             Button("End", role: .destructive) {
-                ChannelManager.shared.endAuction(channelId: channelId)
+                channelManager.endChannel()
             }
         } message: {
             Text("Are you sure you want to end this auction?")
@@ -114,6 +118,7 @@ struct BidSheet: View {
     let channelId: String
     @Environment(\.dismiss) var dismiss
     @State private var bidAmount: String = ""
+    @StateObject private var channelManager = ChannelManager.shared
     
     var body: some View {
         NavigationView {
@@ -126,14 +131,8 @@ struct BidSheet: View {
                 Section {
                     Button("Place Bid") {
                         if let amount = Double(bidAmount) {
-                            let success = ChannelManager.shared.placeBid(
-                                channelId: channelId,
-                                userId: "current_user_id", // TODO: Get actual user ID
-                                amount: amount
-                            )
-                            if success {
-                                dismiss()
-                            }
+                            channelManager.placeBid(amount: amount)
+                            dismiss()
                         }
                     }
                     .disabled(bidAmount.isEmpty)
